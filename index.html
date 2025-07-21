@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fishing Educational App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Fishing Educational App</h1>
+    <nav id="menu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#types-of-fishing">Types of Fishing</a></li>
+        <li><a href="#fishing-equipment">Fishing Equipment</a></li>
+        <li><a href="#fish-recipes">Fish Recipes</a></li>
+        <li><a href="#mini-game">Mini Game</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Home Section -->
+    <section id="home">
+      <h2>Welcome to the Fishing Educational App!</h2>
+      <p>Explore different aspects of fishing and learn something new today.</p>
+      <button onclick="showSection('types-of-fishing')">Start Learning</button>
+    </section>
+
+    <!-- Types of Fishing Section -->
+    <section id="types-of-fishing">
+      <h2>Types of Fishing</h2>
+      <p>Discover various methods used in fishing:</p>
+      <ul>
+        <li><strong>Spinning Fishing:</strong> A versatile technique using spinning rods and reels.</li>
+        <li><strong>Casting Fishing:</strong> Involves throwing a bait or lure into the water.</li>
+        <li><strong>Fly Fishing:</strong> Uses artificial flies to mimic insects for trout and other fish.</li>
+        <li><strong>Trolling:</strong> Dragging lures or bait behind a moving boat.</li>
+      </ul>
+      <button onclick="showSection('fishing-equipment')">Next: Fishing Equipment</button>
+    </section>
+
+    <!-- Fishing Equipment Section -->
+    <section id="fishing-equipment">
+      <h2>Fishing Equipment</h2>
+      <p>Essential gear for every angler:</p>
+      <ul>
+        <li><strong>Rod and Reel:</strong> The backbone of any fishing setup.</li>
+        <li><strong>Lures and Baits:</strong> Attract fish with worms, jigs, or spoons.</li>
+        <li><strong>Line:</strong> Strong enough to handle your target fish species.</li>
+        <li><strong>Waders:</strong> Keep you dry while wading in rivers or lakes.</li>
+        <li><strong>Net:</strong> Safely land your catch without harming it.</li>
+      </ul>
+      <button onclick="showSection('fish-recipes')">Next: Fish Recipes</button>
+    </section>
+
+    <!-- Fish Recipes Section -->
+    <section id="fish-recipes">
+      <h2>Fish Recipes</h2>
+      <p>Delicious ways to enjoy your catch:</p>
+      <div class="recipe-card">
+        <h3>Grilled Salmon</h3>
+        <img src="salmon.jpg" alt="Grilled Salmon">
+        <p>Season salmon fillets with salt, pepper, and lemon juice. Grill over medium heat for 4-5 minutes per side.</p>
+      </div>
+      <div class="recipe-card">
+        <h3>Baked Cod</h3>
+        <img src="cod.jpg" alt="Baked Cod">
+        <p>Stuff cod with herbs, garlic, and butter. Bake at 375°F for 20-25 minutes until flaky.</p>
+      </div>
+      <button onclick="showSection('mini-game')">Next: Mini Game</button>
+    </section>
+
+    <!-- Mini Game Section -->
+    <section id="mini-game">
+      <h2>Fishing Clicker Game</h2>
+      <p>Click on the fish to catch them and earn points!</p>
+      <div id="game-container">
+        <h2 id="scoreBox">Score: <span id="score">0</span></h2>
+        <div id="game-area">
+          <img id="fishId" src="fish.png" alt="Fish Image">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Fishing Educational App. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
