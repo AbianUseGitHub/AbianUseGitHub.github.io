@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fishing Educational App</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -12,7 +12,7 @@
     <nav id="menu">
       <ul>
         <li><a href="#home">Home</a></li>
-        <li><a href="#types-of-fishing">Types of Fishing</a></li>
+        <li><a href="#history-of-fishing">History of Fishing</a></li>
         <li><a href="#fishing-equipment">Fishing Equipment</a></li>
         <li><a href="#fish-recipes">Fish Recipes</a></li>
         <li><a href="#mini-game">Mini Game</a></li>
@@ -22,29 +22,58 @@
 
   <main>
     <!-- Home Section -->
-    <section id="home">
+    <section id="home" class="active">
       <h2>Welcome to the Fishing Educational App!</h2>
       <p>Explore different aspects of fishing and learn something new today.</p>
-      <button onclick="showSection('types-of-fishing')">Start Learning</button>
+      <button onclick="showSection('history-of-fishing')">Start Learning</button>
     </section>
 
-    <!-- Types of Fishing Section -->
-    <section id="types-of-fishing">
-      <h2>Types of Fishing</h2>
-      <p>Discover various methods used in fishing:</p>
-      <ul>
-        <li><strong>Spinning Fishing:</strong> A versatile technique using spinning rods and reels.</li>
-        <li><strong>Casting Fishing:</strong> Involves throwing a bait or lure into the water.</li>
-        <li><strong>Fly Fishing:</strong> Uses artificial flies to mimic insects for trout and other fish.</li>
-        <li><strong>Trolling:</strong> Dragging lures or bait behind a moving boat.</li>
-      </ul>
-      <button onclick="showSection('fishing-equipment')">Next: Fishing Equipment</button>
+    <!-- History of Fishing Section -->
+    <section id="history-of-fishing">
+      <h2>History of Fishing</h2>
+      <div class="timeline">
+        <div class="container left">
+          <div class="content">
+            <h2>40,000 BCE</h2>
+            <p>Early humans used spears and primitive hooks to catch fish in rivers and streams for survival.</p>
+          </div>
+        </div>
+        <div class="container right">
+          <div class="content">
+            <h2>2000 BCE</h2>
+            <p>Ancient Egyptians depicted fishing with rods, lines, and nets in tomb carvings and paintings.</p>
+          </div>
+        </div>
+        <div class="container left">
+          <div class="content">
+            <h2>500 BCE</h2>
+            <p>Fishing became a commercial industry in ancient China and Greece using nets and boats.</p>
+          </div>
+        </div>
+        <div class="container right">
+          <div class="content">
+            <h2>1600s</h2>
+            <p>Modern fly fishing began in England with hand-tied artificial flies and specialized rods.</p>
+          </div>
+        </div>
+        <div class="container left">
+          <div class="content">
+            <h2>1800s</h2>
+            <p>Industrial Revolution introduced metal hooks, reels, and mass-produced fishing gear.</p>
+          </div>
+        </div>
+        <div class="container right">
+          <div class="content">
+            <h2>Present Day</h2>
+            <p>Fishing is both a recreational hobby and a global industry with advanced tech and sustainable practices.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Fishing Equipment Section -->
     <section id="fishing-equipment">
       <h2>Fishing Equipment</h2>
-      <p>Essential gear for every angler:</p>
       <ul>
         <li><strong>Rod and Reel:</strong> The backbone of any fishing setup.</li>
         <li><strong>Lures and Baits:</strong> Attract fish with worms, jigs, or spoons.</li>
@@ -58,15 +87,14 @@
     <!-- Fish Recipes Section -->
     <section id="fish-recipes">
       <h2>Fish Recipes</h2>
-      <p>Delicious ways to enjoy your catch:</p>
       <div class="recipe-card">
         <h3>Grilled Salmon</h3>
-        <img src="salmon.jpg" alt="Grilled Salmon">
+        <img src="salmon.jpg" alt="Grilled Salmon" />
         <p>Season salmon fillets with salt, pepper, and lemon juice. Grill over medium heat for 4-5 minutes per side.</p>
       </div>
       <div class="recipe-card">
         <h3>Baked Cod</h3>
-        <img src="cod.jpg" alt="Baked Cod">
+        <img src="cod.jpg" alt="Baked Cod" />
         <p>Stuff cod with herbs, garlic, and butter. Bake at 375°F for 20-25 minutes until flaky.</p>
       </div>
       <button onclick="showSection('mini-game')">Next: Mini Game</button>
@@ -79,7 +107,7 @@
       <div id="game-container">
         <h2 id="scoreBox">Score: <span id="score">0</span></h2>
         <div id="game-area">
-          <img id="fishId" src="fish.png" alt="Fish Image">
+          <img id="fishId" src="fish.png" alt="Fish" />
         </div>
       </div>
     </section>
