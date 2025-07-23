@@ -10,6 +10,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
   color: #333;
+  font-size: 1rem; /* Base font size for rem units */
 }
 
 /* Header */
@@ -17,8 +18,8 @@ header {
   background: #3498db;
   color: white;
   text-align: center;
-  padding: 30px 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 2em 0; /* Changed from 30px */
+  box-shadow: 0 0.125em 0.375em rgba(0, 0, 0, 0.1); /* Changed from 0 2px 6px */
 }
 
 /* Navigation */
@@ -26,8 +27,9 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 30px;
-  margin-top: 15px;
+  gap: 1.875em; /* Changed from 30px */
+  margin-top: 0.9375em; /* Changed from 15px */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 nav ul li button {
@@ -35,10 +37,12 @@ nav ul li button {
   border: none;
   color: white;
   font-weight: 600;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 0.625em 0.9375em; /* Changed from 10px 15px */
+  border-radius: 0.3125em; /* Changed from 5px */
   transition: background 0.3s ease, transform 0.2s;
   cursor: pointer;
+  font-size: 1rem; /* Ensure consistent font size */
+  white-space: nowrap; /* Prevent text wrapping within buttons */
 }
 
 nav ul li button:hover {
@@ -46,15 +50,85 @@ nav ul li button:hover {
   transform: scale(1.05);
 }
 
+/* --- Mobile Navigation Styles --- */
+
+/* Hide mobile nav by default */
+.nav-mobile {
+  display: none;
+}
+
+/* Style the details/summary dropdown */
+.nav-mobile details {
+  position: relative;
+}
+
+.nav-mobile summary {
+  list-style: none; /* Remove default arrow */
+  background: #3498db;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* Remove default marker in Firefox */
+.nav-mobile summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Add custom arrow */
+.nav-mobile summary::after {
+  content: " ▼";
+  float: right;
+  transition: transform 0.2s ease;
+}
+
+.nav-mobile details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+/* Style the dropdown menu */
+.nav-mobile ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  gap: 10px; /* Space between items */
+  padding: 15px;
+  background: #3498db;
+  border-radius: 0 0 5px 5px;
+  margin: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-mobile ul li button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 12px 15px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  width: 100%; /* Full width buttons */
+  text-align: left; /* Align text to the left */
+  font-size: 1rem;
+}
 /* Main Container */
 main {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 30px;
+  max-width: 62.5em; /* Changed from 1000px */
+  width: 90%; /* Add flexible width */
+  margin: 2.5em auto; /* Changed from 40px */
+  padding: 1.875em; /* Changed from 30px */
   background: #fff;
-  border-radius: 10px;
+  border-radius: 0.625em; /* Changed from 10px */
   text-align: center;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.375em 0.75em rgba(0, 0, 0, 0.1); /* Changed from 0 6px 12px */
 }
 
 /* Hide All Sections by Default */
@@ -70,14 +144,14 @@ section.active-section {
 /* Headings */
 h2 {
   color: #3498db;
-  font-size: 28px;
-  margin-bottom: 15px;
+  font-size: 1.75em; /* Changed from 28px */
+  margin-bottom: 0.9375em; /* Changed from 15px */
 }
 
 /* Paragraphs */
 p {
   line-height: 1.6;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375em; /* Changed from 15px */
 }
 
 /* Buttons */
@@ -85,12 +159,13 @@ button {
   background: #2ecc71;
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 6px;
+  padding: 0.75em 1.5em; /* Changed from 12px 24px */
+  border-radius: 0.375em; /* Changed from 6px */
   font-weight: 600;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 1.25em; /* Changed from 20px */
   transition: background 0.3s ease, transform 0.2s;
+  font-size: 1rem; /* Ensure consistent font size */
 }
 
 button:hover {
@@ -101,72 +176,74 @@ button:hover {
 /* Recipe Cards */
 .recipe-card {
   background: #f8f9fa;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  padding: 1.25em; /* Changed from 20px */
+  border-radius: 0.625em; /* Changed from 10px */
+  margin-bottom: 1.875em; /* Changed from 30px */
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.08); /* Changed from 0 4px 8px */
 }
 
 .recipe-card img {
   width: 100%;
-  max-height: 200px;
+  max-height: 12.5em; /* Changed from 200px */
   object-fit: cover;
-  border-radius: 8px;
-  margin-top: 10px;
+  border-radius: 0.5em; /* Changed from 8px */
+  margin-top: 0.625em; /* Changed from 10px */
 }
 
 /* Game */
 #game-container {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 1.875em; /* Changed from 30px */
 }
 
 #game-area {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 25em; /* Changed from 400px */
   background: linear-gradient(to bottom, #ccefff, #b3e0ff);
-  border: 2px solid #3498db;
+  border: 0.125em solid #3498db; /* Changed from 2px */
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 0.625em; /* Changed from 10px */
 }
 
 #fishId {
   position: absolute;
-  width: 10vw;
+  width: 10vw; /* Keep this as vw for responsive sizing */
   cursor: pointer;
+  /* Add height for better aspect ratio control */
+  height: auto;
 }
 
 /* Footer */
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 1.25em; /* Changed from 20px */
   background-color: #3498db;
   color: white;
-  margin-top: 40px;
-  border-top: 4px solid #2980b9;
+  margin-top: 2.5em; /* Changed from 40px */
+  border-top: 0.25em solid #2980b9; /* Changed from 4px */
 }
 
 /* Timeline Styles */
 .timeline {
   position: relative;
-  max-width: 1000px;
-  margin: 50px auto;
+  max-width: 62.5em; /* Changed from 1000px */
+  margin: 3.125em auto; /* Changed from 50px */
 }
 
 .timeline::after {
   content: '';
   position: absolute;
-  width: 6px;
+  width: 0.375em; /* Changed from 6px */
   background-color: #3498db;
   top: 0;
   bottom: 0;
   left: 50%;
-  margin-left: -3px;
+  margin-left: -0.1875em; /* Changed from -3px */
 }
 
 .container {
-  padding: 10px 40px;
+  padding: 0.625em 2.5em; /* Changed from 10px 40px */
   position: relative;
   background-color: inherit;
   width: 50%;
@@ -175,12 +252,12 @@ footer {
 .container::after {
   content: '';
   position: absolute;
-  width: 25px;
-  height: 25px;
-  right: -17px;
+  width: 1.5625em; /* Changed from 25px */
+  height: 1.5625em; /* Changed from 25px */
+  right: -1.0625em; /* Changed from -17px */
   background-color: white;
-  border: 4px solid #FF9F55;
-  top: 15px;
+  border: 0.25em solid #FF9F55; /* Changed from 4px */
+  top: 0.9375em; /* Changed from 15px */
   border-radius: 50%;
   z-index: 1;
 }
@@ -197,10 +274,10 @@ footer {
   content: " ";
   height: 0;
   position: absolute;
-  top: 22px;
-  right: 30px;
+  top: 1.375em; /* Changed from 22px */
+  right: 1.875em; /* Changed from 30px */
   border: medium solid white;
-  border-width: 10px 0 10px 10px;
+  border-width: 0.625em 0 0.625em 0.625em; /* Changed from 10px */
   border-color: transparent transparent transparent white;
 }
 
@@ -208,47 +285,47 @@ footer {
   content: " ";
   height: 0;
   position: absolute;
-  top: 22px;
-  left: 30px;
+  top: 1.375em; /* Changed from 22px */
+  left: 1.875em; /* Changed from 30px */
   border: medium solid white;
-  border-width: 10px 10px 10px 0;
+  border-width: 0.625em 0.625em 0.625em 0; /* Changed from 10px */
   border-color: transparent white transparent transparent;
 }
 
 .right::after {
-  left: -16px;
+  left: -1em; /* Changed from -16px */
 }
 
 .content {
-  padding: 20px 30px;
+  padding: 1.25em 1.875em; /* Changed from 20px 30px */
   background-color: white;
   position: relative;
-  border-radius: 6px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 0.375em; /* Changed from 6px */
+  box-shadow: 0 0.25em 0.375em rgba(0,0,0,0.1); /* Changed from 0 4px 6px */
   text-align: left;
 }
 
 /* Equipment Section Styles */
 .equipment-item {
-  margin-bottom: 30px;
-  padding: 20px;
+  margin-bottom: 1.875em; /* Changed from 30px */
+  padding: 1.25em; /* Changed from 20px */
   background: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 0.625em; /* Changed from 10px */
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.08); /* Changed from 0 4px 8px */
   text-align: left;
 }
 
 .equipment-img {
   width: 100%;
-  max-height: 200px;
+  max-height: 12.5em; /* Changed from 200px */
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  border-radius: 0.5em; /* Changed from 8px */
+  margin-bottom: 0.9375em; /* Changed from 15px */
 }
 
 .equipment-item h3 {
   color: #3498db;
-  margin-bottom: 10px;
+  margin-bottom: 0.625em; /* Changed from 10px */
 }
 
 .equipment-item p {
@@ -258,38 +335,38 @@ footer {
 
 /* Quiz Styles */
 #equipmentQuiz fieldset {
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 2px solid #3498db;
-  border-radius: 8px;
+  margin-bottom: 1.25em; /* Changed from 20px */
+  padding: 0.9375em; /* Changed from 15px */
+  border: 0.125em solid #3498db; /* Changed from 2px */
+  border-radius: 0.5em; /* Changed from 8px */
   background: #f8f9fa;
 }
 
 #equipmentQuiz legend {
   font-weight: bold;
   color: #3498db;
-  padding: 0 10px;
+  padding: 0 0.625em; /* Changed from 0 10px */
 }
 
 #equipmentQuiz input[type="radio"] {
-  margin-right: 8px;
+  margin-right: 0.5em; /* Changed from 8px */
 }
 
 #equipmentQuiz label {
   cursor: pointer;
   display: inline-block;
-  margin-bottom: 5px;
+  margin-bottom: 0.3125em; /* Changed from 5px */
 }
 
 #btnSubmit {
   background: #3498db;
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 6px;
+  padding: 0.75em 1.5em; /* Changed from 12px 24px */
+  border-radius: 0.375em; /* Changed from 6px */
   font-weight: 600;
   cursor: pointer;
-  margin: 20px 0;
+  margin: 1.25em 0; /* Changed from 20px 0 */
   transition: background 0.3s ease, transform 0.2s;
 }
 
@@ -304,27 +381,36 @@ footer {
   text-align: center;
 }
 
-/* Responsive Timeline */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) { /* Changed from 50em to 800px */
+  .nav-desktop {
+    display: none; /* Hide desktop nav on mobile */
+  }
+  
+  .nav-mobile {
+    display: block; /* Show mobile nav on mobile */
+    padding: 0 20px; /* Add some side padding */
+    margin-top: 15px;
+  }
+
   .timeline::after {
-    left: 31px;
+    left: 1.9375em; /* Changed from 31px */
   }
 
   .container {
     width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
+    padding-left: 4.375em; /* Changed from 70px */
+    padding-right: 1.5625em; /* Changed from 25px */
   }
 
   .container::before {
-    left: 60px;
+    left: 3.75em; /* Changed from 60px */
     border: medium solid white;
-    border-width: 10px 10px 10px 0;
+    border-width: 0.625em 0.625em 0.625em 0; /* Changed from 10px */
     border-color: transparent white transparent transparent;
   }
 
   .left::after, .right::after {
-    left: 15px;
+    left: 0.9375em; /* Changed from 15px */
   }
 
   .right {

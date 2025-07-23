@@ -9,17 +9,33 @@
 </head>
 <body>
   <header>
-    <h1>Fishing Educational App</h1>
-    <nav id="menu">
+  <h1>Fishing Educational App</h1>
+  
+  <!-- Desktop Navigation (Hidden on mobile) -->
+  <nav id="menu" class="nav-desktop">
+    <ul>
+      <li><button id="homeBtn">Home</button></li>
+      <li><button id="historyBtn">History of Fishing</button></li>
+      <li><button id="equipmentBtn">Fishing Equipment</button></li>
+      <li><button id="recipesBtn">Fish Recipes</button></li>
+      <li><button id="gameBtn">Mini Game</button></li>
+    </ul>
+  </nav>
+  
+  <!-- Mobile Navigation using Details/Summary -->
+  <nav class="nav-mobile">
+    <details>
+      <summary>Menu</summary>
       <ul>
-        <li><button id="homeBtn">Home</button></li>
-        <li><button id="historyBtn">History of Fishing</button></li>
-        <li><button id="equipmentBtn">Fishing Equipment</button></li>
-        <li><button id="recipesBtn">Fish Recipes</button></li>
-        <li><button id="gameBtn">Mini Game</button></li>
+        <li><button id="homeBtnMobile">Home</button></li>
+        <li><button id="historyBtnMobile">History of Fishing</button></li>
+        <li><button id="equipmentBtnMobile">Fishing Equipment</button></li>
+        <li><button id="recipesBtnMobile">Fish Recipes</button></li>
+        <li><button id="gameBtnMobile">Mini Game</button></li>
       </ul>
-    </nav>
-  </header>
+    </details>
+  </nav>
+</header>
 
   <main>
     <!-- Home Section -->
