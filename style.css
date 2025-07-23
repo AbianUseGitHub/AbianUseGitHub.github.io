@@ -5,7 +5,7 @@
   padding: 0;
 }
 
-/* Body and base styling */
+/* Body */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
@@ -30,22 +30,23 @@ nav ul {
   margin-top: 15px;
 }
 
-nav ul li a {
+nav ul li button {
+  background: none;
+  border: none;
   color: white;
-  text-decoration: none;
   font-weight: 600;
   padding: 10px 15px;
   border-radius: 5px;
   transition: background 0.3s ease, transform 0.2s;
+  cursor: pointer;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
+nav ul li button:hover {
   background: #2980b9;
   transform: scale(1.05);
 }
 
-/* Main container */
+/* Main Container */
 main {
   max-width: 1000px;
   margin: 40px auto;
@@ -56,14 +57,14 @@ main {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Sections */
+/* Hide All Sections by Default */
 section {
   display: none;
 }
 
-section.active {
+/* Show Active Section */
+section.active-section {
   display: block;
-  padding: 20px 0;
 }
 
 /* Headings */
@@ -97,7 +98,7 @@ button:hover {
   transform: scale(1.03);
 }
 
-/* Recipe cards */
+/* Recipe Cards */
 .recipe-card {
   background: #f8f9fa;
   padding: 20px;
@@ -146,10 +147,7 @@ footer {
   border-top: 4px solid #2980b9;
 }
 
-/* ------------------------------- */
-/* Timeline Styles (Vertical Line) */
-/* ------------------------------- */
-
+/* Timeline Styles */
 .timeline {
   position: relative;
   max-width: 1000px;
@@ -228,6 +226,82 @@ footer {
   border-radius: 6px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   text-align: left;
+}
+
+/* Equipment Section Styles */
+.equipment-item {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.equipment-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.equipment-item h3 {
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+.equipment-item p {
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Quiz Styles */
+#equipmentQuiz fieldset {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+#equipmentQuiz legend {
+  font-weight: bold;
+  color: #3498db;
+  padding: 0 10px;
+}
+
+#equipmentQuiz input[type="radio"] {
+  margin-right: 8px;
+}
+
+#equipmentQuiz label {
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+#btnSubmit {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 20px 0;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+#btnSubmit:hover {
+  background: #2980b9;
+  transform: scale(1.03);
+}
+
+#scorebox {
+  color: #3498db;
+  font-weight: bold;
+  text-align: center;
 }
 
 /* Responsive Timeline */
