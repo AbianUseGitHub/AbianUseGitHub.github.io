@@ -154,3 +154,25 @@ function CheckAns() {
 if (btnSubmit) {
   btnSubmit.addEventListener("click", CheckAns);
 } 
+
+// --- Flip Card Functionality ---
+// Add click event listeners to all flip cards to toggle the 'flipped' class
+document.addEventListener('DOMContentLoaded', function () {
+    const flipCards = document.querySelectorAll('.flip-card');
+
+    flipCards.forEach(card => {
+        // Prevent the flip if clicking on interactive elements inside the card (optional, but good practice)
+        card.addEventListener('click', function (event) {
+            // Stop propagation if clicking on form elements or buttons within the card
+            // This prevents flipping when interacting with quiz elements, etc.
+            // You might need to adjust this list based on what's inside your cards.
+            // For equipment cards, this might not be strictly necessary, but it's safe.
+            // if (event.target.tagName === 'BUTTON' || event.target.tagName === 'INPUT' || event.target.tagName === 'LABEL') {
+            //     return;
+            // }
+            
+            this.classList.toggle('flipped');
+        });
+    });
+});
+// --- End Flip Card Functionality ---
