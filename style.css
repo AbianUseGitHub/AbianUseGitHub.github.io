@@ -208,21 +208,65 @@ button:hover {
 
 #fishId {
   position: absolute;
-  width: 10vw; /* Keep this as vw for responsive sizing */
+  width: 10vw;
   cursor: pointer;
-  /* Add height for better aspect ratio control */
   height: auto;
+  transition: all 0.5s;
 }
 
+/* Define the shrink state */
+#fishId.shrink {
+  width: 5vw; /* Smaller width */
+  opacity: 0; /* Fade out */
+}
+
+@keyframes fishSpinFrames {
+0% { transform: rotate(0deg); }      /* Start */
+  10% { transform: rotate(36deg); }    /* 10% of 360 */
+  20% { transform: rotate(72deg); }    /* 20% of 360 */
+  30% { transform: rotate(108deg); }   /* 30% of 360 */
+  40% { transform: rotate(144deg); }   /* 40% of 360 */
+  50% { transform: rotate(180deg); }   /* Halfway */
+  60% { transform: rotate(216deg); }   /* 60% of 360 */
+  70% { transform: rotate(252deg); }   /* 70% of 360 */
+  80% { transform: rotate(288deg); }   /* 80% of 360 */
+  90% { transform: rotate(324deg); }   /* 90% of 360 */
+  100% { transform: rotate(360deg); }  /* Full circle */
+}
+
+#fishId.anim1 {
+  animation: fishSpinFrames 1s ease; /
+}
 /* Footer */
 footer {
   text-align: center;
-  padding: 1.25em; /* Changed from 20px */
+  padding: 1.25em;
   background-color: #3498db;
   color: white;
-  margin-top: 2.5em; /* Changed from 40px */
-  border-top: 0.25em solid #2980b9; /* Changed from 4px */
+  margin-top: 2.5em;
+  border-top: 0.25em solid #2980b9;
 }
+
+/* --- Footer Back to Top Button --- */
+#backToTopBtnFooter {
+  background: #3498db; /* Match your theme color */
+  color: white;
+  border: none;
+  padding: 0.6em 1.2em; /* Use rem/em for consistency */
+  border-radius: 0.375em; /* Match button border-radius */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease; /* Smooth hover transition */
+  font-size: 1rem; /* Match font size */
+  /* Center the button within the footer */
+  display: block;
+  margin: 0 auto;
+}
+
+#backToTopBtnFooter:hover {
+  background: #2980b9; /* Darker shade on hover, matching other buttons */
+}
+/* --- End Footer Back to Top Button --- */
 
 /* Timeline Styles */
 .timeline {
@@ -244,20 +288,20 @@ footer {
 
 .container {
   padding: 0.625em 2.5em; /* Changed from 10px 40px */
-  position: relative;
+  position: relative; /* **** THIS LINE IS CRITICAL **** */
   background-color: inherit;
-  width: 50%;
+  width: 50%; /* This makes them 50% width */
 }
 
 .container::after {
   content: '';
   position: absolute;
-  width: 1.5625em; /* Changed from 25px */
-  height: 1.5625em; /* Changed from 25px */
-  right: -1.0625em; /* Changed from -17px */
+  width: 1.5625em;
+  height: 1.5625em; 
+  right: -1.0625em; 
   background-color: white;
-  border: 0.25em solid #FF9F55; /* Changed from 4px */
-  top: 0.9375em; /* Changed from 15px */
+  border: 0.25em solid #FF9F55; 
+  top: 0.9375em; 
   border-radius: 50%;
   z-index: 1;
 }
@@ -483,8 +527,102 @@ footer {
   margin-top: 20px; /* Add space above the quiz if it feels too close */
 }
 
-/* Responsive adjustments for flip cards on smaller screens */
-@media screen and (max-width: 768px) {
+/* --- Mini Game Enhancements --- */
+#game-info {
+  display: flex;
+  justify-content: space-around; /* Put score and timer on opposite sides */
+  align-items: center;
+  margin-bottom: 1em; /* Space below the info */
+  font-size: 1.2em; /* Make text a bit larger */
+  font-weight: bold;
+}
+
+#game-info h2 {
+  margin: 0; /* Remove default margins from h2 */
+  color: #3498db; /* Match the theme color */
+}
+
+/* Style for the Start Game button */
+#startGameBtn {
+  background: #3498db; /* Match the theme */
+  margin-top: 1em; /* Space above the button */
+}
+
+#startGameBtn:hover {
+  background: #2980b9; /* Match the theme hover */
+}
+
+#startGameBtn:disabled {
+  background: #bdc3c7; /* Grey out when disabled */
+  cursor: not-allowed;
+  transform: none; /* Remove hover scale effect */
+}
+/* --- End Mini Game Enhancements --- */
+
+/* --- Home Page QR Code --- */
+#homeQRCode {
+  display: block;
+  max-width: 200px; /* Adjust size as needed */
+  height: auto;
+  margin: 20px auto; /* Center it horizontally with some top/bottom margin */
+  border: 2px solid #3498db; /* Optional border to make it stand out */
+  border-radius: 10px; /* Optional rounded corners */
+  padding: 10px; /* Optional padding around the QR code */
+  background-color: white; /* Optional background */
+}
+/* --- End Home Page QR Code --- */
+
+/* --- Responsive Adjustments (800px and below) --- */
+@media screen and (max-width: 800px) {
+  /* Switch to Mobile Menu */
+  .nav-desktop {
+    display: none; /* Hide desktop nav on mobile */
+  }
+
+  #homeQRCode {
+    display: none;
+  }
+  
+  .nav-mobile {
+    display: block; /* Show mobile nav on mobile */
+    padding: 0 20px; /* Add some side padding */
+    margin-top: 15px;
+  }
+
+  /* Adjust main content margin for mobile header height */
+  main {
+    margin: 20px auto; /* Reduce top margin on mobile */
+  }
+
+  /* Responsive Timeline */
+  .timeline::after {
+    left: 1.9375em;
+  }
+
+  .container {
+    width: 100%;
+    padding-left: 4.375em;
+    padding-right: 1.5625em;
+  }
+
+  .container::before {
+    left: 3.75em;
+    border: medium solid white;
+    border-width: 0.625em 0.625em 0.625em 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  .left::after,
+  .right::after {
+    left: 0.9375em;
+  }
+
+  .right {
+    left: 0%;
+  }
+  /* End Responsive Timeline */
+
+  /* Responsive adjustments for flip cards on smaller screens */
   .flip-card {
     width: 100%; /* Full width on small screens */
     max-width: 300px; /* But limit the maximum width */
@@ -495,40 +633,4 @@ footer {
     font-size: 0.9em; /* Slightly smaller text on mobile */
   }
 }
-
-@media screen and (max-width: 800px) { /* Changed from 50em to 800px */
-  .nav-desktop {
-    display: none; /* Hide desktop nav on mobile */
-  }
-  
-  .nav-mobile {
-    display: block; /* Show mobile nav on mobile */
-    padding: 0 20px; /* Add some side padding */
-    margin-top: 15px;
-  }
-
-  .timeline::after {
-    left: 1.9375em; /* Changed from 31px */
-  }
-
-  .container {
-    width: 100%;
-    padding-left: 4.375em; /* Changed from 70px */
-    padding-right: 1.5625em; /* Changed from 25px */
-  }
-
-  .container::before {
-    left: 3.75em; /* Changed from 60px */
-    border: medium solid white;
-    border-width: 0.625em 0.625em 0.625em 0; /* Changed from 10px */
-    border-color: transparent white transparent transparent;
-  }
-
-  .left::after, .right::after {
-    left: 0.9375em; /* Changed from 15px */
-  }
-
-  .right {
-    left: 0%;
-  }
-}
+/* --- End Responsive Adjustments --- */
