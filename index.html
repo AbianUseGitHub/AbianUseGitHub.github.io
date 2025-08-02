@@ -2,17 +2,23 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>Fishing Educational App</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <script src="main.js" defer></script>
 </head>
 
 <body>
   <header>
     <h1>Fishing Educational App</h1>
-
+    <div>
+      <button id="btnFS">Full Screen</button>
+      <button id="btnWS" style="display: none;">Exit Full Screen</button>
+    </div>
     <!-- Desktop Navigation (Hidden on mobile) -->
     <nav id="menu" class="nav-desktop">
       <ul>
@@ -234,7 +240,7 @@
       <!-- Recipe 1: Grilled Salmon -->
       <div class="recipe-card">
         <h3>Grilled Salmon with Herbs</h3>
-        <img src="images/salmon.jpg" alt="Grilled Salmon with Herbs" />
+        <img src="images/salmon.jpg" alt="Grilled Salmon with Herbs">
         <p><strong>Ingredients:</strong></p>
         <div>
           <p>4 salmon fillets (6 oz each)</p>
@@ -266,7 +272,7 @@
       <!-- Recipe 2: Baked Cod -->
       <div class="recipe-card">
         <h3>Baked Cod with Tomato & Olives</h3>
-        <img src="images/cod.jpg" alt="Baked Cod with Tomato & Olives" />
+        <img src="images/cod.jpg" alt="Baked Cod with Tomato & Olives">
         <p><strong>Ingredients:</strong></p>
         <div>
           <p>4 cod fillets (6 oz each)</p>
@@ -303,7 +309,7 @@
       <!-- Recipe 3: Pan-Seared Trout -->
       <div class="recipe-card">
         <h3>Crispy Pan-Seared Trout</h3>
-        <img src="images/trout.jpg" alt="Pan-Seared Trout" />
+        <img src="images/trout.jpg" alt="Pan-Seared Trout">
         <p><strong>Ingredients:</strong></p>
         <div>
           <p>2 whole trout (cleaned and gutted, about 1 lb each)</p>
@@ -347,14 +353,14 @@
     <!-- Mini Game Section -->
     <section id="mini-game" class="page">
       <h2>Fishing Clicker Game</h2>
-      <p>Click on the fish to catch them and earn points!</p>
+      <p>Click start to catch them and earn points!</p>
       <div id="game-container">
         <div id="game-info">
           <h2>Score: <span id="score">0</span></h2>
-          <h2>Time: <span id="timer">30</span>s</h2> 
+          <h2>Time: <span id="timer">30</span>s</h2>
         </div>
         <div id="game-area">
-          <img id="fishId" src="images/fish.png" alt="Fish" />
+          <img id="fishId" src="images/fish.png" alt="Fish">
         </div>
         <button id="startGameBtn">Start Game</button>
       </div>
@@ -362,7 +368,7 @@
   </main>
 
   <footer>
-    <button id="backToTopBtnFooter" title="Go to top of page">&#8593 Back to Top &#8593</button>
+    <button id="backToTopBtnFooter" title="Go to top of page">&#8593; Back to Top &#8593;</button>
   </footer>
 </body>
 

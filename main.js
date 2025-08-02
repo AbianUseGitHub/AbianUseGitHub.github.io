@@ -52,20 +52,20 @@ gameBtn.addEventListener("click", function () {
   show("mini-game");
 });
 homeBtnMobile.addEventListener("click", function () {
-  show("home")
+  show("home");
 });
 historyBtnMobile.addEventListener("click", function () {
-  show("history-of-fishing")
+  show("history-of-fishing");
 });
 equipmentBtnMobile.addEventListener("click", function () {
-  show("fishing-equipment")
+  show("fishing-equipment");
 });
 recipesBtnMobile.addEventListener("click", function () {
-  show("fish-recipes")
+  show("fish-recipes");
 });
 
 gameBtnMobile.addEventListener("click", function () {
-  show("mini-game")
+  show("mini-game");
 });
 
 // Initialize by hiding all pages first, then showing home
@@ -78,10 +78,10 @@ const toEquipmentBtn = document.querySelector('#toEquipmentBtn');
 const toRecipesBtn = document.querySelector('#toRecipesBtn');
 const toGameBtn = document.querySelector('#toGameBtn');
 
-if (startLearningBtn) startLearningBtn.addEventListener('click', () => show("history-of-fishing"));
-if (toEquipmentBtn) toEquipmentBtn.addEventListener('click', () => show("fishing-equipment"));
-if (toRecipesBtn) toRecipesBtn.addEventListener('click', () => show("fish-recipes"));
-if (toGameBtn) toGameBtn.addEventListener('click', () => show("mini-game"));
+if (startLearningBtn) startLearningBtn.addEventListener('click', function () { show("history-of-fishing"); });
+if (toEquipmentBtn) toEquipmentBtn.addEventListener('click', function () { show("fishing-equipment"); });
+if (toRecipesBtn) toRecipesBtn.addEventListener('click', function () { show("fish-recipes"); });
+if (toGameBtn) toGameBtn.addEventListener('click', function () { show("mini-game"); });
 
 
 // --- Mini Game: Fishing Clicker ---
@@ -90,7 +90,7 @@ const fishId = document.getElementById("fishId");
 const scoreElement = document.getElementById("score");
 const timerElement = document.getElementById("timer");
 const startGameBtn = document.getElementById("startGameBtn");
-const splashAudio = new Audio("audio/splashSound.ogg")
+const splashAudio = new Audio("audio/splashSound.ogg");
 
 let score = 0;
 let timeLeft = 30;
@@ -126,17 +126,13 @@ function CatchFish() {
 
   // --- Trigger Animations ---
   fishId.classList.add("anim1");
-
   fishId.classList.add("shrink");
-
   splashAudio.play();
-  setTimeout(() => {
-    // Remove the animation classes so they can be re-triggered
+
+  setTimeout(function () {
     fishId.classList.remove("anim1");
     fishId.classList.remove("shrink");
 
-    // Move the fish after the animations are done and classes are removed
-    // Check gameActive again in case the game ended during the timeout
     if (gameActive) {
       MoveFish();
     }
@@ -175,7 +171,7 @@ function startGame() {
   // Update UI
   scoreElement.textContent = score;
   timerElement.textContent = timeLeft;
-  startGameBtn.disabled = true; // Disable button during game
+  startGameBtn.disabled = true;
   startGameBtn.textContent = "Game Running...";
 
   // Cancel any existing intervals (safety check)
@@ -186,8 +182,8 @@ function startGame() {
   timerInterval = setInterval(updateTimer, 1000);
 
   // Start moving the fish automatically every 2 seconds
-  moveInterval = setInterval(() => {
-    if (gameActive) MoveFish(); 
+  moveInterval = setInterval(function () {
+    if (gameActive) MoveFish();
   }, 2000);
 
   // Initial move to get the fish on screen
@@ -208,7 +204,7 @@ function endGame() {
   }
 
   // Update UI
-  startGameBtn.disabled = false; 
+  startGameBtn.disabled = false;
   startGameBtn.textContent = "Start Game";
 
   //console.log(`Game Over! Final Score: ${score}`);
@@ -245,9 +241,11 @@ initMiniGame();
 // --- Quiz functionality for Fishing Equipment ---
 const btnSubmit = document.querySelector("#btnSubmit");
 const scorebox = document.querySelector("#scorebox");
+// Get the parent form element for the quiz to insert messages correctly
+const equipmentQuizForm = document.getElementById("equipmentQuiz");
 
 // Move the score variable declaration here, outside the function
-let quizScore = 0; 
+let quizScore = 0;
 
 function CheckAns() {
   quizScore = 0; // reset score to 0
@@ -261,6 +259,14 @@ function CheckAns() {
   if (!q1 || !q2 || !q3 || !q4) {
     scorebox.innerHTML = "Please answer all questions!";
     scorebox.style.color = "#e74c3c";
+
+    // --- NEW: Remove existing feedback message if answers are missing ---
+    const existingFeedback = document.querySelector('.quiz-feedback');
+    if (existingFeedback) {
+      existingFeedback.remove();
+    }
+    // --- END NEW ---
+
     return;
   }
 
@@ -270,14 +276,56 @@ function CheckAns() {
   if (q3.value === "Safely bringing fish to hand") quizScore++;
   if (q4.value === "Spinning reel") quizScore++;
 
+  const oldFeedback = document.querySelector('.quiz-feedback');
+  if (oldFeedback) {
+    oldFeedback.remove();
+  }
+  const feedbackMessage = document.createElement('p');
+  feedbackMessage.className = 'quiz-feedback';
+
+  // Determine the message based on the score
+  if (quizScore === 4) {
+    // Perfect Score Feedback
+    feedbackMessage.textContent = '🎉 Perfect Score! Fishing Expert! 🎉';
+    feedbackMessage.style.color = '#27ae60';
+    feedbackMessage.style.fontWeight = 'bold';
+    feedbackMessage.style.marginTop = '10px';
+    feedbackMessage.style.padding = '10px';
+    feedbackMessage.style.backgroundColor = '#e8f5e9';
+    feedbackMessage.style.borderRadius = '5px';
+  } else if (quizScore >= 2) {
+    // Pass (2 or 3 correct)
+    feedbackMessage.textContent = 'Good job! You passed the quiz.';
+    feedbackMessage.style.color = '#3498db';
+    feedbackMessage.style.fontWeight = 'bold';
+    feedbackMessage.style.marginTop = '10px';
+    feedbackMessage.style.padding = '10px';
+    feedbackMessage.style.backgroundColor = '#e3f2fd';
+    feedbackMessage.style.borderRadius = '5px';
+  } else {
+    // Fail (0 or 1 correct)
+    feedbackMessage.textContent = 'You can do better, try again!';
+    feedbackMessage.style.color = '#e74c3c';
+    feedbackMessage.style.fontWeight = 'bold';
+    feedbackMessage.style.marginTop = '10px';
+    feedbackMessage.style.padding = '10px';
+    feedbackMessage.style.backgroundColor = '#ffebee';
+    feedbackMessage.style.borderRadius = '5px';
+  }
+
   // Display score
-  scorebox.innerHTML = `Score: ${quizScore}/4`;
+  scorebox.innerHTML = "Score: " + quizScore + "/4";
   scorebox.style.color = quizScore >= 3 ? "#27ae60" : "#e74c3c";
+
+  if (equipmentQuizForm && scorebox) {
+    equipmentQuizForm.insertBefore(feedbackMessage, scorebox.nextSibling);
+  }
 }
 
 if (btnSubmit) {
   btnSubmit.addEventListener("click", CheckAns);
 }
+// --- End Quiz functionality for Fishing Equipment ---
 
 // --- Flip Card Functionality ---
 const equipmentContainer = document.querySelector('.equipment-container');
@@ -297,17 +345,19 @@ if (equipmentContainer) {
 
 // --- Footer Back to Top Button Functionality ---
 // Select the button in the footer
-const backToTopFooterBtn = document.getElementById("backToTopBtnFooter");
+var backToTopFooterBtn = document.getElementById("backToTopBtnFooter");
 
 // Check if the button exists
 if (backToTopFooterBtn) {
-  // Function to scroll smoothly to the top
-  function scrollToTop() {
+  // --- Function Expression to scroll smoothly to the top ---
+  // Define the function using a function expression assigned to a variable
+  var scrollToTop = function () {
     window.scrollTo({
       top: 0,
       behavior: 'smooth' // This creates the smooth scrolling effect
     });
-  }
+  };
+  // --- End Function Expression ---
 
   // Attach the click event listener to the button
   backToTopFooterBtn.addEventListener('click', scrollToTop);
@@ -315,3 +365,58 @@ if (backToTopFooterBtn) {
   console.warn("Footer Back to Top button with ID 'backToTopBtnFooter' not found.");
 }
 // --- End Footer Back to Top Button Functionality ---
+
+// --- Fullscreen Functionality for Entire Website ---
+const btnFS = document.getElementById("btnFS");
+const btnWS = document.getElementById("btnWS");
+
+// Check if buttons exist before adding listeners (good practice)
+if (btnFS && btnWS) {
+  btnFS.addEventListener("click", enterFullscreen);
+  btnWS.addEventListener("click", exitFullscreen);
+
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange); // Safari
+  document.addEventListener('mozfullscreenchange', handleFullscreenChange);    // Firefox
+  document.addEventListener('MSFullscreenChange', handleFullscreenChange);     // IE11
+
+  function handleFullscreenChange() {
+    if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+      // Fullscreen is active
+      btnFS.style.display = 'none';
+      btnWS.style.display = 'inline-block';
+    } else {
+      // Fullscreen is not active
+      btnFS.style.display = 'inline-block';
+      btnWS.style.display = 'none';
+    }
+  }
+}
+
+function enterFullscreen() {
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen().catch(err => {
+      console.warn(`Error attempting to enable fullscreen: ${err.message} (${err.name})`);
+    });
+  } else if (elem.mozRequestFullScreen) { // Firefox
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { // IE/Edge
+    elem.msRequestFullscreen();
+  }
+}
+
+function exitFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) { // Firefox
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) { // Chrome, Safari, and Opera
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { // IE/Edge
+    document.msExitFullscreen();
+  }
+}
+// --- END: Fullscreen Functionality for Entire Website ---

@@ -261,7 +261,7 @@ button:hover {
 }
 
 #fishId.anim1 {
-  animation: fishSpinFrames 1s ease;/
+  animation: fishSpinFrames 1s ease;
 }
 
 /* Footer */
@@ -490,7 +490,6 @@ footer {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
@@ -579,6 +578,13 @@ footer {
   transform: none;
 }
 
+.quiz-feedback {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
 /* --- End Mini Game Enhancements --- */
 
 /* --- Home Page QR Code --- */
@@ -594,6 +600,30 @@ footer {
 }
 
 /* --- End Home Page QR Code --- */
+
+header div {
+  margin-top: 10px;
+}
+
+#btnFS,
+#btnWS {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.625em 0.9375em;
+  border-radius: 0.3125em;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: background 0.3s ease, transform 0.2s;
+  font-size: 1rem;
+}
+
+#btnFS:hover,
+#btnWS:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+}
 
 /* --- Responsive Adjustments (800px and below) --- */
 @media screen and (max-width: 800px) {
@@ -658,5 +688,20 @@ footer {
 
   .flip-card-back p {
     font-size: 0.9em;
+  }
+
+  #fishId {
+    width: 25vw;
+  }
+
+  #fishId.shrink {
+    width: 15vw;
+    opacity: 0;
+  }
+
+  #game-info {
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
   }
 }
