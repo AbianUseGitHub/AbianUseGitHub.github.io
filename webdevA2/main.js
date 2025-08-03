@@ -370,7 +370,19 @@ if (backToTopFooterBtn) {
 const btnFS = document.getElementById("btnFS");
 const btnWS = document.getElementById("btnWS");
 
-// Check if buttons exist before adding listeners (good practice)
+const handleFullscreenChange = function () {
+  if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+    // Fullscreen is active
+    if (btnFS) btnFS.style.display = 'none';
+    if (btnWS) btnWS.style.display = 'inline-block';
+  } else {
+    // Fullscreen is not active
+    if (btnFS) btnFS.style.display = 'inline-block';
+    if (btnWS) btnWS.style.display = 'none';
+  }
+};
+
+// Check if buttons exist before adding listeners
 if (btnFS && btnWS) {
   btnFS.addEventListener("click", enterFullscreen);
   btnWS.addEventListener("click", exitFullscreen);
@@ -379,25 +391,13 @@ if (btnFS && btnWS) {
   document.addEventListener('webkitfullscreenchange', handleFullscreenChange); // Safari
   document.addEventListener('mozfullscreenchange', handleFullscreenChange);    // Firefox
   document.addEventListener('MSFullscreenChange', handleFullscreenChange);     // IE11
-
-  function handleFullscreenChange() {
-    if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
-      // Fullscreen is active
-      btnFS.style.display = 'none';
-      btnWS.style.display = 'inline-block';
-    } else {
-      // Fullscreen is not active
-      btnFS.style.display = 'inline-block';
-      btnWS.style.display = 'none';
-    }
-  }
 }
 
 function enterFullscreen() {
   const elem = document.documentElement;
   if (elem.requestFullscreen) {
-    elem.requestFullscreen().catch(err => {
-      console.warn(`Error attempting to enable fullscreen: ${err.message} (${err.name})`);
+    elem.requestFullscreen().catch(function (err) {
+      console.warn('Error attempting to enable fullscreen: ' + err.message + ' (' + err.name + ')');
     });
   } else if (elem.mozRequestFullScreen) { // Firefox
     elem.mozRequestFullScreen();

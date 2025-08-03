@@ -1,0 +1,15 @@
+{
+  "name": "Educational Fishing App",
+  "short_name": "Fishing App",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#00FF00",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ]
+}
